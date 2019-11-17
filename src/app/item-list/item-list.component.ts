@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Item } from '../models/item';
-import { ItemService } from '../services/item.service';
-import { Observable } from 'rxjs';
+import {Component, OnInit, Input} from '@angular/core';
+import {Item} from '../models/item';
+import {ItemService} from '../services/item.service';
 
 @Component({
   selector: 'app-todo-list',

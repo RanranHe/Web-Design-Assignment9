@@ -1,7 +1,5 @@
 <div class="todo-list">
   <div *ngFor="let item of itemsChild">
-      <h1 > {{item.title}} </h1>
-
-    <!--<app-sticky [sticky]="item"></app-sticky>-->
+    <app-item [item]="item"></app-item>
   </div>
 </div>

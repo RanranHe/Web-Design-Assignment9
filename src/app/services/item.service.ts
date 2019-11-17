@@ -15,7 +15,7 @@ export class ItemService {
    * Constructor.
    */
   constructor(private http: HttpClient) {
-    this.itemResource = 'api/items';
+    this.itemResource = 'api';
     this.itemResourceURL = `${environment.serverBaseURL}/${this.itemResource}`;
   }
 
@@ -24,8 +24,8 @@ export class ItemService {
    *
    * @return {Observable<Array<Item>>} {Observable sticky array of stickies}
    */
-  getStickies(): Observable<Array<Item>> {
-    return this.http.get<Array<Item>>(this.itemResourceURL);
+  getItems(): Observable<Array<Item>> {
+    return this.http.get<Array<Item>>(`${this.itemResourceURL}/items`);
   }
 
   /**

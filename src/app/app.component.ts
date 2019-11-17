@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { Item } from './models/item';
-import { ItemService } from './services/item.service';
-import { Observable } from 'rxjs';
+import {Component} from '@angular/core';
+import {Item} from './models/item';
+import {ItemService} from './services/item.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +13,9 @@ export class AppComponent {
   itemsParent: Array<Item>;
 
   constructor(itemService: ItemService) {
-    const stickies$: Observable<Array<Item>> = itemService.getStickies();
-    stickies$.subscribe(stickies => {
-      this.itemsParent = stickies;
+    const stickies$: Observable<Array<Item>> = itemService.getItems();
+    stickies$.subscribe(items => {
+      this.itemsParent = items;
     });
   }
 
