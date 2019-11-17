@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Item } from '../models/item';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Item} from '../models/item';
 
-import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class ItemService {
@@ -15,7 +15,7 @@ export class ItemService {
    * Constructor.
    */
   constructor(private http: HttpClient) {
-    this.itemResource = 'stickies';
+    this.itemResource = 'api/items';
     this.itemResourceURL = `${environment.serverBaseURL}/${this.itemResource}`;
   }
 
@@ -34,9 +34,9 @@ export class ItemService {
    * @param  {Item} sticky: Sticky {new sticky object}
    * @return {Observable<Item>} {Observable for saved sticky object}
    */
-  createSticky(sticky: Item = null): Observable<Item> {
-    let newSticky: Item;
-    newSticky = sticky ? sticky : new Item('Untitled Sticky', '');
-    return this.http.post<Item>(this.itemResourceURL, newSticky);
+  createItem(item: Item = null): Observable<Item> {
+    let newItem: Item;
+    newItem = item ? item : new Item('Untitled Item', '');
+    return this.http.post<Item>(`${this.itemResourceURL}/item`, newItem);
   }
 }
