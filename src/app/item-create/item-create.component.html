@@ -1,0 +1,13 @@
+<div class="item-view">
+  <form [formGroup]="itemForm" (ngSubmit)="createItem()">
+    Title: <input type="text" id="title" class="formFields" required formControlName="title"/><br/>
+    <!--<label *ngIf="!itemForm.controls.title.valid">first name is required</label> <br/><br/>-->
+    Content: <input type="text" id="content" class="formFields" required formControlName="content"/><br/>
+    <!--<label *ngIf="!itemForm.controls.content.valid">last name is required</label> <br/><br/>-->
+    Modified Date: <input type="text" id="date_modified" class="formFields" readonly formControlName="date_modified"/> <br/>
+    <!--<label *ngIf="!contactForm.controls.email.valid">email is required</label><br/><br/>-->
+    Created Date: <input type="text" id="date_created" class="formFields" readonly formControlName="date_created"/> <br/>
+    <!--<label *ngIf="!contactForm.controls.phone.valid">phone is required</label><br/><br/>-->
+    <button type="submit" [disabled]="itemForm.invalid">Create</button>
+  </form>
+</div>

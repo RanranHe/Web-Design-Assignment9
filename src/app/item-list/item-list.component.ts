@@ -2,6 +2,7 @@ import {Component, OnInit, Input, Output} from '@angular/core';
 import {Item} from '../models/item';
 import {ItemService} from '../services/item.service';
 import {forEach} from '@angular/router/src/utils/collection';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -38,12 +39,12 @@ export class ItemListComponent implements OnInit {
     });
   }
 
-  // createItem() {
-  //   const newItem$: Observable<Item> = this.itemService.createItem();
-  //   newItem$.subscribe(newItem => {
-  //     this.itemsChild.push(newItem);
-  //   });
-  // }
+  createItem(item: Item) {
+    const newItem$: Observable<Item> = this.itemService.createItem(item);
+    newItem$.subscribe(res => {
+      this.itemsChild.push(res.item);
+    });
+  }
 
   ngOnInit() {
   }

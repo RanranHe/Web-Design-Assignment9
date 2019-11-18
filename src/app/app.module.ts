@@ -3,12 +3,14 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+
 // Components
 import {AppComponent} from './app.component';
 import {ItemListComponent} from './item-list/item-list.component';
 import {ItemComponent} from './item/item.component';
 import {ItemViewComponent} from './item-view/item-view.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ItemCreateComponent} from './item-create/item-create.component';
 
 // Services
 import {ItemService} from './services/item.service';
@@ -19,7 +21,8 @@ import {ItemService} from './services/item.service';
     AppComponent,
     ItemListComponent,
     ItemComponent,
-    ItemViewComponent
+    ItemViewComponent,
+    ItemCreateComponent
   ],
   imports: [
     BrowserModule,

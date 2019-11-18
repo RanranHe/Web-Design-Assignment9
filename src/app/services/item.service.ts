@@ -42,10 +42,8 @@ export class ItemService {
 
   updateItem(id: string, title: string, content: string) {
     const modifiedDate = new Date();
-    const url = `${this.itemResourceURL}/item/${id}`;
-    console.log(url);
-    const newItem = new Item(title, content);
-    const observable = this.http.put<Item>('http://localhost:4000/api/item/5dc5a3f81f2d560f97789d9d', newItem);
+    const observable = this.http.put<Item>(`${this.itemResourceURL}/item/${id}`,
+      {title: title, content: content, date_modified: modifiedDate});
     observable.subscribe(res => {
       console.log('Update Item');
       console.log(res);
