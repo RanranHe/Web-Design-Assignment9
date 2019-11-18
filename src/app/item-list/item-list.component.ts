@@ -29,6 +29,15 @@ export class ItemListComponent implements OnInit {
     });
   }
 
+  deleteItem(id: string) {
+    this.itemsChild.forEach((item, index) => {
+      if (item.id === id) {
+        this.itemsChild.splice(index, 1);
+        this.itemService.deleteItem(id);
+      }
+    });
+  }
+
   // createItem() {
   //   const newItem$: Observable<Item> = this.itemService.createItem();
   //   newItem$.subscribe(newItem => {

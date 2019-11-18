@@ -41,13 +41,21 @@ export class ItemService {
   }
 
   updateItem(id: string, title: string, content: string) {
-    const arr = [];
     const modifiedDate = new Date();
     const url = `${this.itemResourceURL}/item/${id}`;
     console.log(url);
     const newItem = new Item(title, content);
     const observable = this.http.put<Item>('http://localhost:4000/api/item/5dc5a3f81f2d560f97789d9d', newItem);
     observable.subscribe(res => {
+      console.log('Update Item');
+      console.log(res);
+    });
+  }
+
+  deleteItem(id: string) {
+    const observable = this.http.delete<Item>(`${this.itemResourceURL}/item/${id}`);
+    observable.subscribe(res => {
+      console.log('Delete Item');
       console.log(res);
     });
   }

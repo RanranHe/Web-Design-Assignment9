@@ -8,7 +8,6 @@ import {AppComponent} from './app.component';
 import {ItemListComponent} from './item-list/item-list.component';
 import {ItemComponent} from './item/item.component';
 import {ItemViewComponent} from './item-view/item-view.component';
-import {ItemUpdateComponent} from './item-update/item-update.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
 // Services
@@ -20,8 +19,7 @@ import {ItemService} from './services/item.service';
     AppComponent,
     ItemListComponent,
     ItemComponent,
-    ItemViewComponent,
-    ItemUpdateComponent
+    ItemViewComponent
   ],
   imports: [
     BrowserModule,

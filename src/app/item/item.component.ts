@@ -23,6 +23,14 @@ export class ItemComponent implements OnInit {
     this.showItem = true;
   }
 
+  cancel() {
+    this.showItem = false;
+  }
+
+  delete(id: string) {
+    this.itemListComponent.deleteItem(id);
+  }
+
   ngOnInit() {
   }
 
