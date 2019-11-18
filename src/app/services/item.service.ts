@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Item} from '../models/item';
 
 import {environment} from '../../environments/environment';
@@ -41,6 +41,14 @@ export class ItemService {
   }
 
   updateItem(id: string, title: string, content: string) {
-    return this.http.put<JSON>(`${this.itemResourceURL}/item/${id}`, {title: title, content: content});
+    const arr = [];
+    const modifiedDate = new Date();
+    const url = `${this.itemResourceURL}/item/${id}`;
+    console.log(url);
+    const newItem = new Item(title, content);
+    const observable = this.http.put<Item>('http://localhost:4000/api/item/5dc5a3f81f2d560f97789d9d', newItem);
+    observable.subscribe(res => {
+      console.log(res);
+    });
   }
 }

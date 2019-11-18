@@ -7,8 +7,10 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {AppComponent} from './app.component';
 import {ItemListComponent} from './item-list/item-list.component';
 import {ItemComponent} from './item/item.component';
+import {ItemViewComponent} from './item-view/item-view.component';
 import {ItemUpdateComponent} from './item-update/item-update.component';
-// import {StickyComponent} from './sticky/sticky.component';
+import {ReactiveFormsModule} from '@angular/forms';
+
 // Services
 import {ItemService} from './services/item.service';
 
@@ -18,12 +20,14 @@ import {ItemService} from './services/item.service';
     AppComponent,
     ItemListComponent,
     ItemComponent,
+    ItemViewComponent,
     ItemUpdateComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],

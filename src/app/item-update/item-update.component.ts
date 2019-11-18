@@ -40,9 +40,9 @@ export class ItemUpdateComponent implements OnInit {
     // let item = new Item(this.title, this.content, this.date_modified, this.phone);
     // console.log(item);
     // const item = new Item(this.item.id, this.title, this.content, this.date_modified, this.item.createdDate);
-    this.itemService.updateItem(this.item.id, this.title, this.content).subscribe(() => {
-      this.itemListComponent.updateItem(this.item.id, this.title, this.content);
-    });
+    // this.itemService.updateItem(this.item.id, this.title, this.content).subscribe(() => {
+    //   this.itemListComponent.updateItem(this.item.id, this.title, this.content);
+    // });
     // const items$: Observable<Array<Item>> = this.itemService.getItems();
     // items$.subscribe(items => {
     //   this.itemListComponent.itemsChild = items;

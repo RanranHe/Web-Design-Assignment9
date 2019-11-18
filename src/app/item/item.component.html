@@ -3,7 +3,8 @@
   <p> {{item.content}}</p>
   <p>{{item.createdDate}}</p>
   <p>{{item.modifiedDate}}</p>
-  <button>update</button>
+  <!--<button>update</button>-->
 </div>
-
+<button (click)="view(item.id)">View</button>
+<app-item-view *ngIf="showItem" [itemListComponent]="itemListComponent" [item]="item"></app-item-view>
 <!--<app-item-update (updateItemEmitted)="updateItem($event)"></app-item-update>-->
