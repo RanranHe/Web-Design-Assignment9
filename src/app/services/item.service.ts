@@ -39,4 +39,8 @@ export class ItemService {
     newItem = item ? item : new Item('Untitled Item', '');
     return this.http.post<Item>(`${this.itemResourceURL}/item`, newItem);
   }
+
+  updateItem(id: string, title: string, content: string) {
+    return this.http.put<JSON>(`${this.itemResourceURL}/item/${id}`, {title: title, content: content});
+  }
 }

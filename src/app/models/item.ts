@@ -1,5 +1,5 @@
 export class Item {
-    id: Number;
+    id: string;
     title: string;
     content: string;
     createdDate: Date;

@@ -7,7 +7,7 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {AppComponent} from './app.component';
 import {ItemListComponent} from './item-list/item-list.component';
 import {ItemComponent} from './item/item.component';
-// import {StickyAreaComponent} from './sticky-area/sticky-area.component';
+import {ItemUpdateComponent} from './item-update/item-update.component';
 // import {StickyComponent} from './sticky/sticky.component';
 // Services
 import {ItemService} from './services/item.service';
@@ -17,8 +17,8 @@ import {ItemService} from './services/item.service';
   declarations: [
     AppComponent,
     ItemListComponent,
-    ItemComponent
-    // StickyComponent
+    ItemComponent,
+    ItemUpdateComponent
   ],
   imports: [
     BrowserModule,

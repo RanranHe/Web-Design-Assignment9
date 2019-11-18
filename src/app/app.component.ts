@@ -10,16 +10,18 @@ import {Observable} from 'rxjs';
 })
 export class AppComponent {
 
-  itemsParent: Array<Item>;
+  itemsParent: Map<string, Item>;
 
   constructor(itemService: ItemService) {
     const stickies$: Observable<Array<Item>> = itemService.getItems();
     stickies$.subscribe(items => {
-      this.itemsParent = items;
+      items.forEach(item => {
+        this.itemsParent.set(item.id, item);
+      });
     });
   }
 
-  addItem(item: Item) {
-    this.itemsParent.push(item);
-  }
+  // addItem(item: Item) {
+  //   this.itemsParent.set(item);
+  // }
 }
