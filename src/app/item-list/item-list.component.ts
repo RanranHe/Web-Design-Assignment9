@@ -14,6 +14,7 @@ export class ItemListComponent implements OnInit {
   @Input() itemsChild: Array<Item>;
   @Output() itemListComponent: ItemListComponent;
   itemService: ItemService;
+  showCreate = false;
 
   constructor(itemService: ItemService) {
     this.itemService = itemService;
@@ -28,13 +29,14 @@ export class ItemListComponent implements OnInit {
    * @param content
    * @param modifiedDate
    */
-  updateItem(id: string, title: string, content: string, modifiedDate: Date) {
+  updateItem(id: string, title: string, content: string, modifiedDate: Date, dueDate: Date) {
     this.itemsChild.forEach(item => {
       if (item.id === id) {
         item.title = title;
         item.content = content;
         item.modifiedDate = modifiedDate;
-        this.itemService.updateItem(id, title, content, modifiedDate);
+        item.dueDate = dueDate;
+        this.itemService.updateItem(id, title, content, modifiedDate, dueDate);
       }
     });
   }
@@ -64,6 +66,20 @@ export class ItemListComponent implements OnInit {
       console.log(res);
       // @ts-ignore
       this.itemsChild.push(res.item);
+    });
+  }
+
+  // show create area
+  showCreateArea() {
+    this.showCreate = true;
+  }
+
+  updateStatus(id: string) {
+    this.itemsChild.forEach(item => {
+      if (item.id === id) {
+        item.status = 'Complete';
+        this.itemService.updateStatus(id);
+      }
     });
   }
 

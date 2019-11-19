@@ -34,16 +34,25 @@ export class ItemService {
    */
   createItem(item: Item = null): Observable<Item> {
     let newItem: Item;
-    newItem = item ? item : new Item('Untitled Item', '');
+    newItem = item ? item : new Item('Untitled Item', '', new Date());
     return this.http.post<Item>(`${this.itemResourceURL}/item`, newItem);
   }
 
   // update Item by ID
-  updateItem(id: string, title: string, content: string, modifiedDate: Date) {
+  updateItem(id: string, title: string, content: string, modifiedDate: Date, dueDate: Date) {
     const observable = this.http.put<Item>(`${this.itemResourceURL}/item/${id}`,
-      {title: title, content: content, modifiedDate: modifiedDate});
+      {title: title, content: content, modifiedDate: modifiedDate, dueDate: dueDate});
     observable.subscribe(res => { // get response
       console.log('Update Item');
+      console.log(res);
+    });
+  }
+
+  updateStatus(id: string) {
+    const observable = this.http.put<Item>(`${this.itemResourceURL}/item/${id}`,
+      {status: 'Complete'});
+    observable.subscribe(res => { // get response
+      console.log('Update Status');
       console.log(res);
     });
   }
