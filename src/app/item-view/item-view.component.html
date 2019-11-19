@@ -3,7 +3,7 @@
   <form [formGroup]="itemForm" (ngSubmit)="updateItemInfo()">
     <section><p>Title: </p><input type="text" id="title" class="formFields" required formControlName="title"/></section>
     <section><p class="status">{{item.status}}</p></section>
-    <section><p>Due On: </p><input type="date" id="due" class="formFields" required formControlName="due"/></section>
+    <section><p>Due On: </p><input type="datetime-local" id="due" class="formFields" required formControlName="due"/></section>
     <section><p>Description: </p><input type="text" id="content" class="formFields" required
                                         formControlName="content"/><br/>
     </section>
