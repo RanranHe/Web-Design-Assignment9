@@ -20,6 +20,14 @@ export class ItemListComponent implements OnInit {
     this.itemListComponent = this;
   }
 
+  /**
+   * update item request
+   * send to item service and do the update on current arr
+   * @param id
+   * @param title
+   * @param content
+   * @param modifiedDate
+   */
   updateItem(id: string, title: string, content: string, modifiedDate: Date) {
     this.itemsChild.forEach(item => {
       if (item.id === id) {
@@ -31,6 +39,11 @@ export class ItemListComponent implements OnInit {
     });
   }
 
+  /**
+   * delete item by id
+   * pass to item service and do delete on current arr
+   * @param id
+   */
   deleteItem(id: string) {
     this.itemsChild.forEach((item, index) => {
       if (item.id === id) {
@@ -40,6 +53,11 @@ export class ItemListComponent implements OnInit {
     });
   }
 
+  /**
+   * create item
+   * pass to item service and do create on current arr
+   * @param item
+   */
   createItem(item: Item) {
     const newItem$: Observable<Item> = this.itemService.createItem(item);
     newItem$.subscribe(res => {

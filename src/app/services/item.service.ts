@@ -11,9 +11,7 @@ export class ItemService {
   itemResource: string;
   itemResourceURL: string;
 
-  /**
-   * Constructor.
-   */
+  // Constructor
   constructor(private http: HttpClient) {
     this.itemResource = 'api';
     this.itemResourceURL = `${environment.serverBaseURL}/${this.itemResource}`;
@@ -22,7 +20,7 @@ export class ItemService {
   /**
    * Returns all items.
    *
-   * @return {Observable<Array<Item>>} {Observable sticky array of stickies}
+   * @return {Observable<Array<Item>>} {Observable item array of items}
    */
   getItems(): Observable<Array<Item>> {
     return this.http.get<Array<Item>>(`${this.itemResourceURL}/items`);
@@ -31,7 +29,7 @@ export class ItemService {
   /**
    * Creates new item.
    *
-   * @param  {Item} sticky: Sticky {new sticky object}
+   * @param  {Item} item: Item {new item object}
    * @return {Observable<Item>} {Observable for saved sticky object}
    */
   createItem(item: Item = null): Observable<Item> {
@@ -40,18 +38,20 @@ export class ItemService {
     return this.http.post<Item>(`${this.itemResourceURL}/item`, newItem);
   }
 
+  // update Item by ID
   updateItem(id: string, title: string, content: string, modifiedDate: Date) {
     const observable = this.http.put<Item>(`${this.itemResourceURL}/item/${id}`,
       {title: title, content: content, modifiedDate: modifiedDate});
-    observable.subscribe(res => {
+    observable.subscribe(res => { // get response
       console.log('Update Item');
       console.log(res);
     });
   }
 
+  // delete item by id
   deleteItem(id: string) {
     const observable = this.http.delete<Item>(`${this.itemResourceURL}/item/${id}`);
-    observable.subscribe(res => {
+    observable.subscribe(res => { // get response
       console.log('Delete Item');
       console.log(res);
     });
