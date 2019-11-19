@@ -1,0 +1,24 @@
+.item-view {
+  border: 1px solid white;
+  padding: 1%;
+  margin-top: 5px;
+  width: 95%;
+  border-radius: 5px;
+  button {
+    margin-top: 8px;
+  }
+  section {
+    margin-left: 0;
+    margin-bottom: 5px;
+    position: relative;
+    height: 30px;
+    p {
+      display: inline-block;
+      width: 120px;
+    }
+    input {
+      width: 70%;
+
+    }
+  }
+}
