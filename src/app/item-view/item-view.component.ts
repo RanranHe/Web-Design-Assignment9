@@ -30,7 +30,6 @@ export class ItemViewComponent implements OnInit {
 
   ngOnInit() {
     this.showDetails();
-    console.log(this.datePipe.transform(new Date(), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\''));
   }
 
   // parse value to form
