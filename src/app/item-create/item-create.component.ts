@@ -12,12 +12,12 @@ import {ItemListComponent} from '../item-list/item-list.component';
 })
 
 export class ItemCreateComponent implements OnInit {
-  @Input() itemListComponent: ItemListComponent;
-  @Input() item: Item;
+  @Input() itemListComponent: ItemListComponent; // passing item-list in order to pass requests
 
   private itemForm: FormGroup;
 
-  constructor(private itemService: ItemService) {
+  // constructor
+  constructor() {
     this.itemForm = new FormGroup({
       title: new FormControl('', Validators.required),
       content: new FormControl('', Validators.required),
@@ -29,6 +29,10 @@ export class ItemCreateComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * passing request to item-list
+   * create item
+   */
   createItem() {
     const title = this.itemForm.get('title').value;
     const content = this.itemForm.get('content').value;
@@ -37,6 +41,7 @@ export class ItemCreateComponent implements OnInit {
     this.clear();
   }
 
+  // empty the inputs
   clear() {
     this.itemForm.patchValue({
       title: '',
