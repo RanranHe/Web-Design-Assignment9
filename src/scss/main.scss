@@ -1,5 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Lato|Roboto);
-// @import '~bootstrap/scss/bootstrap';
-@import "variable.scss";
-@import "mixin.scss";
-@import "common.scss";
+/*Class Selectors*/
+body {
+  background-color: rgba(rgb(29, 173, 118), 0.1);;
+  margin: 0;
+}
