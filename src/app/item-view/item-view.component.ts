@@ -38,14 +38,24 @@ export class ItemViewComponent implements OnInit {
   // parse value to form
   showDetails() {
     const date = new Date(this.item.dueDate);
-    const dateString = (date.getUTCMonth() + 1) + '/' + date.getUTCDate() + '/' + date.getUTCFullYear();
+
+    const dateString = date.getUTCFullYear() + '-' + this.form((date.getUTCMonth() + 1)) + '-' + this.form(date.getUTCDate())
+      + 'T' + this.form(date.getUTCHours()) + ':' + this.form(date.getUTCMinutes());
     this.itemForm.patchValue({
       title: this.item.title,
       content: this.item.content,
       date_modified: this.datePipe.transform(this.item.modifiedDate, 'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\''),
       date_created: this.item.createdDate,
-      due: this.datePipe.transform(dateString, 'yyyy-MM-dd')
+      due: dateString
     });
+  }
+
+  form(value) {
+    if (value < 10) {
+      return '0' + value;
+    } else {
+      return value;
+    }
   }
 
   /**

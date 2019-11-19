@@ -57,9 +57,19 @@ export class ItemComponent implements OnInit {
     }
   }
 
-  getDateString(date: Date) {
-    const newDate = new Date(date);
-    return (newDate.getUTCMonth() + 1) + '/' + newDate.getUTCDate() + '/' + newDate.getUTCFullYear();
+  getDateString(d: Date) {
+    const date = new Date(d);
+    const dateString = date.getUTCFullYear() + '/' + this.form((date.getUTCMonth() + 1)) + '/' + this.form(date.getUTCDate())
+      + ' ' + this.form(date.getUTCHours()) + ':' + this.form(date.getUTCMinutes());
+    return dateString;
+  }
+
+  form(value) {
+    if (value < 10) {
+      return '0' + value;
+    } else {
+      return value;
+    }
   }
 
   ngOnInit() {
