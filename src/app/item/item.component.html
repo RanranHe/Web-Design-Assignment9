@@ -1,0 +1,16 @@
+<div class="item">
+  <div class="content">
+    <h2> {{item.title}} </h2>
+    <!--<p> {{item.content}}</p>-->
+    <!--<p>{{item.createdDate}}</p>-->
+    <!--<p>{{item.modifiedDate}}</p>-->
+  </div>
+
+
+  <button (click)="view(item.id)">View</button>
+  <button (click)="delete(item.id)">Delete</button>
+  <button *ngIf="showItem" (click)="cancel(item.id)">Cancel</button>
+  <app-item-view *ngIf="showItem" [itemListComponent]="itemListComponent" [item]="item"></app-item-view>
+</div>
+
+

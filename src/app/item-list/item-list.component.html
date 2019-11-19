@@ -1,0 +1,11 @@
+<div class="todo-list">
+  <div *ngFor="let item of itemsChild">
+    <app-item [itemListComponent]="itemListComponent" [item]="item"></app-item>
+  </div>
+</div>
+
+<div class="item-create">
+  <app-item-create [itemListComponent]="itemListComponent"></app-item-create>
+</div>
+
+
