@@ -9,6 +9,7 @@ import {ItemListComponent} from '../item-list/item-list.component';
   styleUrls: ['./item.component.scss']
 })
 
+
 export class ItemComponent implements OnInit {
   @Input() item: Item;
   @Input() itemListComponent: ItemListComponent;
@@ -28,7 +29,11 @@ export class ItemComponent implements OnInit {
   }
 
   delete(id: string) {
-    this.itemListComponent.deleteItem(id);
+    if (confirm('Are you sure you want to delete this item?')) {
+      this.itemListComponent.deleteItem(id);
+    } else {
+      return;
+    }
   }
 
   ngOnInit() {

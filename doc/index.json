@@ -1,0 +1,1068 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "name": "app/app.component.spec.ts",
+    "content": "import { TestBed, async } from '@angular/core/testing';\nimport { AppComponent } from './app.component';\ndescribe('AppComponent', () => {\n  beforeEach(async(() => {\n    TestBed.configureTestingModule({\n      declarations: [\n        AppComponent\n      ],\n    }).compileComponents();\n  }));\n  it('should create the app', async(() => {\n    const fixture = TestBed.createComponent(AppComponent);\n    const app = fixture.debugElement.componentInstance;\n    expect(app).toBeTruthy();\n  }));\n  it(`should have as title 'app'`, async(() => {\n    const fixture = TestBed.createComponent(AppComponent);\n    const app = fixture.debugElement.componentInstance;\n    expect(app.title).toEqual('app');\n  }));\n  it('should render title in a h1 tag', async(() => {\n    const fixture = TestBed.createComponent(AppComponent);\n    fixture.detectChanges();\n    const compiled = fixture.debugElement.nativeElement;\n    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');\n  }));\n});\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/app.component.spec.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 1,
+    "kind": "file",
+    "name": "app/app.component.ts",
+    "content": "import {Component} from '@angular/core';\nimport {Item} from './models/item';\nimport {ItemService} from './services/item.service';\nimport {Observable} from 'rxjs';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n\n  itemsParent: Array<Item>;\n\n  constructor(itemService: ItemService) {\n    // get all items\n    const items$: Observable<Array<Item>> = itemService.getItems();\n    items$.subscribe(items => {\n      this.itemsParent = items;\n    });\n  }\n}\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/app.component.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 2,
+    "kind": "variable",
+    "name": "__decorate",
+    "memberof": "app/app.component.ts",
+    "static": true,
+    "longname": "app/app.component.ts~__decorate",
+    "access": null,
+    "export": false,
+    "importPath": "ng-lecture/app/app.component.ts",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "class",
+    "name": "AppComponent",
+    "memberof": "app/app.component.ts",
+    "static": true,
+    "longname": "app/app.component.ts~AppComponent",
+    "access": null,
+    "export": true,
+    "importPath": "ng-lecture/app/app.component.ts",
+    "importStyle": "{AppComponent}",
+    "description": "",
+    "lineNumber": 11,
+    "interface": false
+  },
+  {
+    "__docId__": 4,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "app/app.component.ts~AppComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/app.component.ts~AppComponent#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "member",
+    "name": "itemsParent",
+    "memberof": "app/app.component.ts~AppComponent",
+    "static": false,
+    "longname": "app/app.component.ts~AppComponent#itemsParent",
+    "access": null,
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "file",
+    "name": "app/app.module.ts",
+    "content": "// Modules\nimport {BrowserModule} from '@angular/platform-browser';\nimport {FormsModule} from '@angular/forms';\nimport {HttpClientModule} from '@angular/common/http';\nimport {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';\nimport {ReactiveFormsModule} from '@angular/forms';\nimport { DatePipe } from '@angular/common'; // use for transform data format\n\n// Components\nimport {AppComponent} from './app.component';\nimport {ItemListComponent} from './item-list/item-list.component';\nimport {ItemComponent} from './item/item.component';\nimport {ItemViewComponent} from './item-view/item-view.component';\nimport {ItemCreateComponent} from './item-create/item-create.component';\n\n// Services\nimport {ItemService} from './services/item.service';\n\n\n@NgModule({\n  declarations: [\n    AppComponent,\n    ItemListComponent,\n    ItemComponent,\n    ItemViewComponent,\n    ItemCreateComponent\n  ],\n  imports: [\n    BrowserModule,\n    FormsModule,\n    HttpClientModule,\n    ReactiveFormsModule,\n  ],\n  providers: [ItemService, DatePipe],\n  bootstrap: [AppComponent],\n  schemas: [CUSTOM_ELEMENTS_SCHEMA]\n})\nexport class AppModule {\n}\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/app.module.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 7,
+    "kind": "variable",
+    "name": "__decorate",
+    "memberof": "app/app.module.ts",
+    "static": true,
+    "longname": "app/app.module.ts~__decorate",
+    "access": null,
+    "export": false,
+    "importPath": "ng-lecture/app/app.module.ts",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "class",
+    "name": "AppModule",
+    "memberof": "app/app.module.ts",
+    "static": true,
+    "longname": "app/app.module.ts~AppModule",
+    "access": null,
+    "export": true,
+    "importPath": "ng-lecture/app/app.module.ts",
+    "importStyle": "{AppModule}",
+    "description": "",
+    "lineNumber": 38,
+    "interface": false
+  },
+  {
+    "__docId__": 9,
+    "kind": "file",
+    "name": "app/item/item.component.spec.ts",
+    "content": "import {async, ComponentFixture, TestBed} from '@angular/core/testing';\n\nimport {ItemComponent} from './item.component';\n\ndescribe('ItemComponent', () => {\n  let component: ItemComponent;\n  let fixture: ComponentFixture<ItemComponent>;\n\n  beforeEach(async(() => {\n    TestBed.configureTestingModule({\n      declarations: [ItemComponent]\n    })\n      .compileComponents();\n  }));\n\n  beforeEach(() => {\n    fixture = TestBed.createComponent(ItemComponent);\n    component = fixture.componentInstance;\n    fixture.detectChanges();\n  });\n\n  it('should create', () => {\n    expect(component).toBeTruthy();\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/item/item.component.spec.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 10,
+    "kind": "file",
+    "name": "app/item/item.component.ts",
+    "content": "import {Component, OnInit, Input} from '@angular/core';\nimport {Item} from '../models/item';\nimport {ItemService} from '../services/item.service';\nimport {ItemListComponent} from '../item-list/item-list.component';\n\n@Component({\n  selector: 'app-item',\n  templateUrl: './item.component.html',\n  styleUrls: ['./item.component.scss']\n})\n\nexport class ItemComponent implements OnInit {\n  @Input() item: Item;\n  @Input() itemListComponent: ItemListComponent;\n  itemService: ItemService;\n  showItem = false;\n\n  constructor(itemService: ItemService) {\n    this.itemService = itemService;\n  }\n\n  view() {\n    this.showItem = true;\n  }\n\n  cancel() {\n    this.showItem = false;\n  }\n\n  delete(id: string) {\n    if (confirm('Are you sure you want to delete this item?')) {\n      this.itemListComponent.deleteItem(id);\n    } else {\n      return;\n    }\n  }\n\n  ngOnInit() {\n  }\n\n}\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/item/item.component.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 11,
+    "kind": "variable",
+    "name": "__decorate",
+    "memberof": "app/item/item.component.ts",
+    "static": true,
+    "longname": "app/item/item.component.ts~__decorate",
+    "access": null,
+    "export": false,
+    "importPath": "ng-lecture/app/item/item.component.ts",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "class",
+    "name": "ItemComponent",
+    "memberof": "app/item/item.component.ts",
+    "static": true,
+    "longname": "app/item/item.component.ts~ItemComponent",
+    "access": null,
+    "export": true,
+    "importPath": "ng-lecture/app/item/item.component.ts",
+    "importStyle": "{ItemComponent}",
+    "description": "",
+    "lineNumber": 12,
+    "interface": false
+  },
+  {
+    "__docId__": 13,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "app/item/item.component.ts~ItemComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item/item.component.ts~ItemComponent#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "member",
+    "name": "showItem",
+    "memberof": "app/item/item.component.ts~ItemComponent",
+    "static": false,
+    "longname": "app/item/item.component.ts~ItemComponent#showItem",
+    "access": null,
+    "description": "",
+    "lineNumber": 16
+  },
+  {
+    "__docId__": 15,
+    "kind": "member",
+    "name": "itemService",
+    "memberof": "app/item/item.component.ts~ItemComponent",
+    "static": false,
+    "longname": "app/item/item.component.ts~ItemComponent#itemService",
+    "access": null,
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "method",
+    "name": "view",
+    "memberof": "app/item/item.component.ts~ItemComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item/item.component.ts~ItemComponent#view",
+    "access": null,
+    "description": "",
+    "lineNumber": 22
+  },
+  {
+    "__docId__": 18,
+    "kind": "method",
+    "name": "cancel",
+    "memberof": "app/item/item.component.ts~ItemComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item/item.component.ts~ItemComponent#cancel",
+    "access": null,
+    "description": "",
+    "lineNumber": 26
+  },
+  {
+    "__docId__": 20,
+    "kind": "method",
+    "name": "delete",
+    "memberof": "app/item/item.component.ts~ItemComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item/item.component.ts~ItemComponent#delete",
+    "access": null,
+    "description": "",
+    "lineNumber": 30,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 21,
+    "kind": "method",
+    "name": "ngOnInit",
+    "memberof": "app/item/item.component.ts~ItemComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item/item.component.ts~ItemComponent#ngOnInit",
+    "access": null,
+    "description": "",
+    "lineNumber": 38
+  },
+  {
+    "__docId__": 22,
+    "kind": "file",
+    "name": "app/item-create/item-create.component.spec.ts",
+    "content": "import {async, ComponentFixture, TestBed} from '@angular/core/testing';\n\nimport {ItemCreateComponent} from './item-create.component';\n\ndescribe('ItemCreateComponent', () => {\n  let component: ItemCreateComponent;\n  let fixture: ComponentFixture<ItemCreateComponent>;\n\n  beforeEach(async(() => {\n    TestBed.configureTestingModule({\n      declarations: [ItemCreateComponent]\n    })\n      .compileComponents();\n  }));\n\n  beforeEach(() => {\n    fixture = TestBed.createComponent(ItemCreateComponent);\n    component = fixture.componentInstance;\n    fixture.detectChanges();\n  });\n\n  it('should create', () => {\n    expect(component).toBeTruthy();\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/item-create/item-create.component.spec.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 23,
+    "kind": "file",
+    "name": "app/item-create/item-create.component.ts",
+    "content": "import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';\nimport {Item} from '../models/item';\nimport {FormGroup, FormControl, Validators} from '@angular/forms';\nimport {Observable} from 'rxjs';\nimport {ItemService} from '../services/item.service';\nimport {ItemListComponent} from '../item-list/item-list.component';\n\n@Component({\n  selector: 'app-item-create',\n  templateUrl: './item-create.component.html',\n  styleUrls: ['./item-create.component.scss']\n})\n\nexport class ItemCreateComponent implements OnInit {\n  @Input() itemListComponent: ItemListComponent;\n  @Input() item: Item;\n\n  private itemForm: FormGroup;\n\n  constructor(private itemService: ItemService) {\n    this.itemForm = new FormGroup({\n      title: new FormControl('', Validators.required),\n      content: new FormControl('', Validators.required),\n      date_modified: new FormControl(),\n      date_created: new FormControl()\n    });\n  }\n\n  ngOnInit() {\n  }\n\n  createItem() {\n    const title = this.itemForm.get('title').value;\n    const content = this.itemForm.get('content').value;\n    const newItem = new Item(title, content);\n    this.itemListComponent.createItem(newItem);\n    this.clear();\n  }\n\n  clear() {\n    this.itemForm.patchValue({\n      title: '',\n      content: ''\n    });\n  }\n}\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/item-create/item-create.component.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 24,
+    "kind": "variable",
+    "name": "__decorate",
+    "memberof": "app/item-create/item-create.component.ts",
+    "static": true,
+    "longname": "app/item-create/item-create.component.ts~__decorate",
+    "access": null,
+    "export": false,
+    "importPath": "ng-lecture/app/item-create/item-create.component.ts",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "class",
+    "name": "ItemCreateComponent",
+    "memberof": "app/item-create/item-create.component.ts",
+    "static": true,
+    "longname": "app/item-create/item-create.component.ts~ItemCreateComponent",
+    "access": null,
+    "export": true,
+    "importPath": "ng-lecture/app/item-create/item-create.component.ts",
+    "importStyle": "{ItemCreateComponent}",
+    "description": "",
+    "lineNumber": 14,
+    "interface": false
+  },
+  {
+    "__docId__": 26,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "app/item-create/item-create.component.ts~ItemCreateComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-create/item-create.component.ts~ItemCreateComponent#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "member",
+    "name": "itemService",
+    "memberof": "app/item-create/item-create.component.ts~ItemCreateComponent",
+    "static": false,
+    "longname": "app/item-create/item-create.component.ts~ItemCreateComponent#itemService",
+    "access": null,
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "member",
+    "name": "itemForm",
+    "memberof": "app/item-create/item-create.component.ts~ItemCreateComponent",
+    "static": false,
+    "longname": "app/item-create/item-create.component.ts~ItemCreateComponent#itemForm",
+    "access": null,
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "method",
+    "name": "ngOnInit",
+    "memberof": "app/item-create/item-create.component.ts~ItemCreateComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-create/item-create.component.ts~ItemCreateComponent#ngOnInit",
+    "access": null,
+    "description": "",
+    "lineNumber": 29
+  },
+  {
+    "__docId__": 30,
+    "kind": "method",
+    "name": "createItem",
+    "memberof": "app/item-create/item-create.component.ts~ItemCreateComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-create/item-create.component.ts~ItemCreateComponent#createItem",
+    "access": null,
+    "description": "",
+    "lineNumber": 32
+  },
+  {
+    "__docId__": 31,
+    "kind": "method",
+    "name": "clear",
+    "memberof": "app/item-create/item-create.component.ts~ItemCreateComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-create/item-create.component.ts~ItemCreateComponent#clear",
+    "access": null,
+    "description": "",
+    "lineNumber": 40
+  },
+  {
+    "__docId__": 32,
+    "kind": "file",
+    "name": "app/item-list/item-list.component.spec.ts",
+    "content": "import {async, ComponentFixture, TestBed} from '@angular/core/testing';\n\nimport {ItemListComponent} from './item-list.component';\n\ndescribe('ItemListComponent', () => {\n  let component: ItemListComponent;\n  let fixture: ComponentFixture<ItemListComponent>;\n\n  beforeEach(async(() => {\n    TestBed.configureTestingModule({\n      declarations: [ItemListComponent]\n    })\n      .compileComponents();\n  }));\n\n  beforeEach(() => {\n    fixture = TestBed.createComponent(ItemListComponent);\n    component = fixture.componentInstance;\n    fixture.detectChanges();\n  });\n\n  it('should create', () => {\n    expect(component).toBeTruthy();\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/item-list/item-list.component.spec.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 33,
+    "kind": "file",
+    "name": "app/item-list/item-list.component.ts",
+    "content": "import {Component, OnInit, Input, Output} from '@angular/core';\nimport {Item} from '../models/item';\nimport {ItemService} from '../services/item.service';\nimport {forEach} from '@angular/router/src/utils/collection';\nimport {Observable} from 'rxjs';\n\n@Component({\n  selector: 'app-todo-list',\n  templateUrl: './item-list.component.html',\n  styleUrls: ['./item-list.component.scss']\n})\n\nexport class ItemListComponent implements OnInit {\n  @Input() itemsChild: Array<Item>;\n  @Output() itemListComponent: ItemListComponent;\n  itemService: ItemService;\n\n  constructor(itemService: ItemService) {\n    this.itemService = itemService;\n    this.itemListComponent = this;\n  }\n\n  updateItem(id: string, title: string, content: string, modifiedDate: Date) {\n    this.itemsChild.forEach(item => {\n      if (item.id === id) {\n        item.title = title;\n        item.content = content;\n        item.modifiedDate = modifiedDate;\n        this.itemService.updateItem(id, title, content, modifiedDate);\n      }\n    });\n  }\n\n  deleteItem(id: string) {\n    this.itemsChild.forEach((item, index) => {\n      if (item.id === id) {\n        this.itemsChild.splice(index, 1);\n        this.itemService.deleteItem(id);\n      }\n    });\n  }\n\n  createItem(item: Item) {\n    const newItem$: Observable<Item> = this.itemService.createItem(item);\n    newItem$.subscribe(res => {\n      console.log(res);\n      // @ts-ignore\n      this.itemsChild.push(res.item);\n    });\n  }\n\n  ngOnInit() {\n  }\n\n}\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/item-list/item-list.component.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 34,
+    "kind": "variable",
+    "name": "__decorate",
+    "memberof": "app/item-list/item-list.component.ts",
+    "static": true,
+    "longname": "app/item-list/item-list.component.ts~__decorate",
+    "access": null,
+    "export": false,
+    "importPath": "ng-lecture/app/item-list/item-list.component.ts",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "class",
+    "name": "ItemListComponent",
+    "memberof": "app/item-list/item-list.component.ts",
+    "static": true,
+    "longname": "app/item-list/item-list.component.ts~ItemListComponent",
+    "access": null,
+    "export": true,
+    "importPath": "ng-lecture/app/item-list/item-list.component.ts",
+    "importStyle": "{ItemListComponent}",
+    "description": "",
+    "lineNumber": 13,
+    "interface": false
+  },
+  {
+    "__docId__": 36,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "app/item-list/item-list.component.ts~ItemListComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-list/item-list.component.ts~ItemListComponent#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "member",
+    "name": "itemService",
+    "memberof": "app/item-list/item-list.component.ts~ItemListComponent",
+    "static": false,
+    "longname": "app/item-list/item-list.component.ts~ItemListComponent#itemService",
+    "access": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "member",
+    "name": "itemListComponent",
+    "memberof": "app/item-list/item-list.component.ts~ItemListComponent",
+    "static": false,
+    "longname": "app/item-list/item-list.component.ts~ItemListComponent#itemListComponent",
+    "access": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "method",
+    "name": "updateItem",
+    "memberof": "app/item-list/item-list.component.ts~ItemListComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-list/item-list.component.ts~ItemListComponent#updateItem",
+    "access": null,
+    "description": "",
+    "lineNumber": 23,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "title",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "content",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Date"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "modifiedDate",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 40,
+    "kind": "method",
+    "name": "deleteItem",
+    "memberof": "app/item-list/item-list.component.ts~ItemListComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-list/item-list.component.ts~ItemListComponent#deleteItem",
+    "access": null,
+    "description": "",
+    "lineNumber": 34,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 41,
+    "kind": "method",
+    "name": "createItem",
+    "memberof": "app/item-list/item-list.component.ts~ItemListComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-list/item-list.component.ts~ItemListComponent#createItem",
+    "access": null,
+    "description": "",
+    "lineNumber": 43,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Item"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "item",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 42,
+    "kind": "method",
+    "name": "ngOnInit",
+    "memberof": "app/item-list/item-list.component.ts~ItemListComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-list/item-list.component.ts~ItemListComponent#ngOnInit",
+    "access": null,
+    "description": "",
+    "lineNumber": 52
+  },
+  {
+    "__docId__": 43,
+    "kind": "file",
+    "name": "app/item-view/item-view.component.spec.ts",
+    "content": "import {async, ComponentFixture, TestBed} from '@angular/core/testing';\n\nimport {ItemViewComponent} from './item-update.component';\n\ndescribe('ItemComponent', () => {\n  let component: ItemViewComponent;\n  let fixture: ComponentFixture<ItemViewComponent>;\n\n  beforeEach(async(() => {\n    TestBed.configureTestingModule({\n      declarations: [ItemViewComponent]\n    })\n      .compileComponents();\n  }));\n\n  beforeEach(() => {\n    fixture = TestBed.createComponent(ItemViewComponent);\n    component = fixture.componentInstance;\n    fixture.detectChanges();\n  });\n\n  it('should create', () => {\n    expect(component).toBeTruthy();\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/item-view/item-view.component.spec.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 44,
+    "kind": "file",
+    "name": "app/item-view/item-view.component.ts",
+    "content": "import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';\nimport {Item} from '../models/item';\nimport {FormGroup, FormControl, Validators} from '@angular/forms';\nimport {Observable} from 'rxjs';\nimport {ItemService} from '../services/item.service';\nimport {ItemListComponent} from '../item-list/item-list.component';\nimport {DatePipe} from '@angular/common';\n\n@Component({\n  selector: 'app-item-view',\n  templateUrl: './item-view.component.html',\n  styleUrls: ['./item-view.component.scss']\n})\n\nexport class ItemViewComponent implements OnInit {\n  @Input() itemListComponent: ItemListComponent;\n  @Input() item: Item;\n\n  private itemForm: FormGroup;\n  // private title;\n  // private content;\n  // private date_modified;\n\n  constructor(private datePipe: DatePipe) {\n    this.itemForm = new FormGroup({\n      title: new FormControl('', Validators.required),\n      content: new FormControl('', Validators.required),\n      date_modified: new FormControl(),\n      date_created: new FormControl()\n    });\n\n  }\n\n  ngOnInit() {\n    this.showDetails();\n    console.log(this.datePipe.transform(new Date(), 'yyyy-MM-dd\\'T\\'HH:mm:ss.SSS\\'Z\\''));\n  }\n\n  showDetails() {\n    this.itemForm.patchValue({\n      title: this.item.title,\n      content: this.item.content,\n      date_modified: this.datePipe.transform(this.item.modifiedDate, 'yyyy-MM-dd\\'T\\'HH:mm:ss.SSS\\'Z\\''),\n      date_created: this.item.createdDate\n    });\n  }\n\n  updateItemInfo() {\n    if (confirm('Are you sure you want to update this item?')) {\n      const title = this.itemForm.get('title').value;\n      const content = this.itemForm.get('content').value;\n      const modified_date = new Date();\n      this.itemListComponent.updateItem(this.item.id, title, content, modified_date);\n      this.itemForm.patchValue({\n        date_modified: this.datePipe.transform(modified_date, 'yyyy-MM-dd\\'T\\'HH:mm:ss.SSS\\'Z\\'')\n      });\n    } else {\n      return;\n    }\n  }\n}\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/item-view/item-view.component.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 45,
+    "kind": "variable",
+    "name": "__decorate",
+    "memberof": "app/item-view/item-view.component.ts",
+    "static": true,
+    "longname": "app/item-view/item-view.component.ts~__decorate",
+    "access": null,
+    "export": false,
+    "importPath": "ng-lecture/app/item-view/item-view.component.ts",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "class",
+    "name": "ItemViewComponent",
+    "memberof": "app/item-view/item-view.component.ts",
+    "static": true,
+    "longname": "app/item-view/item-view.component.ts~ItemViewComponent",
+    "access": null,
+    "export": true,
+    "importPath": "ng-lecture/app/item-view/item-view.component.ts",
+    "importStyle": "{ItemViewComponent}",
+    "description": "",
+    "lineNumber": 15,
+    "interface": false
+  },
+  {
+    "__docId__": 47,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "app/item-view/item-view.component.ts~ItemViewComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-view/item-view.component.ts~ItemViewComponent#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "member",
+    "name": "datePipe",
+    "memberof": "app/item-view/item-view.component.ts~ItemViewComponent",
+    "static": false,
+    "longname": "app/item-view/item-view.component.ts~ItemViewComponent#datePipe",
+    "access": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true
+  },
+  {
+    "__docId__": 49,
+    "kind": "member",
+    "name": "itemForm",
+    "memberof": "app/item-view/item-view.component.ts~ItemViewComponent",
+    "static": false,
+    "longname": "app/item-view/item-view.component.ts~ItemViewComponent#itemForm",
+    "access": null,
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "method",
+    "name": "ngOnInit",
+    "memberof": "app/item-view/item-view.component.ts~ItemViewComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-view/item-view.component.ts~ItemViewComponent#ngOnInit",
+    "access": null,
+    "description": "",
+    "lineNumber": 34
+  },
+  {
+    "__docId__": 51,
+    "kind": "method",
+    "name": "showDetails",
+    "memberof": "app/item-view/item-view.component.ts~ItemViewComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-view/item-view.component.ts~ItemViewComponent#showDetails",
+    "access": null,
+    "description": "",
+    "lineNumber": 39
+  },
+  {
+    "__docId__": 52,
+    "kind": "method",
+    "name": "updateItemInfo",
+    "memberof": "app/item-view/item-view.component.ts~ItemViewComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/item-view/item-view.component.ts~ItemViewComponent#updateItemInfo",
+    "access": null,
+    "description": "",
+    "lineNumber": 48
+  },
+  {
+    "__docId__": 53,
+    "kind": "file",
+    "name": "app/models/item.ts",
+    "content": "export class Item {\n    id: string;\n    title: string;\n    content: string;\n    createdDate: Date;\n    modifiedDate: Date;\n    constructor(title: string, content: string) {\n        this.title = title;\n        this.content = content;\n        this.createdDate = new Date();\n        this.modifiedDate = new Date();\n    }\n}\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/models/item.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 54,
+    "kind": "class",
+    "name": "Item",
+    "memberof": "app/models/item.ts",
+    "static": true,
+    "longname": "app/models/item.ts~Item",
+    "access": null,
+    "export": true,
+    "importPath": "ng-lecture/app/models/item.ts",
+    "importStyle": "{Item}",
+    "description": "",
+    "lineNumber": 1,
+    "interface": false
+  },
+  {
+    "__docId__": 55,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "app/models/item.ts~Item",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/models/item.ts~Item#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "member",
+    "name": "title",
+    "memberof": "app/models/item.ts~Item",
+    "static": false,
+    "longname": "app/models/item.ts~Item#title",
+    "access": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "member",
+    "name": "content",
+    "memberof": "app/models/item.ts~Item",
+    "static": false,
+    "longname": "app/models/item.ts~Item#content",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "member",
+    "name": "createdDate",
+    "memberof": "app/models/item.ts~Item",
+    "static": false,
+    "longname": "app/models/item.ts~Item#createdDate",
+    "access": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "member",
+    "name": "modifiedDate",
+    "memberof": "app/models/item.ts~Item",
+    "static": false,
+    "longname": "app/models/item.ts~Item#modifiedDate",
+    "access": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "file",
+    "name": "app/services/item.service.ts",
+    "content": "import {Injectable} from '@angular/core';\nimport {HttpClient, HttpHeaders} from '@angular/common/http';\nimport {Item} from '../models/item';\n\nimport {environment} from '../../environments/environment';\nimport {Observable} from 'rxjs';\n\n@Injectable()\nexport class ItemService {\n\n  itemResource: string;\n  itemResourceURL: string;\n\n  /**\n   * Constructor.\n   */\n  constructor(private http: HttpClient) {\n    this.itemResource = 'api';\n    this.itemResourceURL = `${environment.serverBaseURL}/${this.itemResource}`;\n  }\n\n  /**\n   * Returns all items.\n   *\n   * @return {Observable<Array<Item>>} {Observable sticky array of stickies}\n   */\n  getItems(): Observable<Array<Item>> {\n    return this.http.get<Array<Item>>(`${this.itemResourceURL}/items`);\n  }\n\n  /**\n   * Creates new item.\n   *\n   * @param  {Item} sticky: Sticky {new sticky object}\n   * @return {Observable<Item>} {Observable for saved sticky object}\n   */\n  createItem(item: Item = null): Observable<Item> {\n    let newItem: Item;\n    newItem = item ? item : new Item('Untitled Item', '');\n    return this.http.post<Item>(`${this.itemResourceURL}/item`, newItem);\n  }\n\n  updateItem(id: string, title: string, content: string, modifiedDate: Date) {\n    const observable = this.http.put<Item>(`${this.itemResourceURL}/item/${id}`,\n      {title: title, content: content, modifiedDate: modifiedDate});\n    observable.subscribe(res => {\n      console.log('Update Item');\n      console.log(res);\n    });\n  }\n\n  deleteItem(id: string) {\n    const observable = this.http.delete<Item>(`${this.itemResourceURL}/item/${id}`);\n    observable.subscribe(res => {\n      console.log('Delete Item');\n      console.log(res);\n    });\n  }\n}\n",
+    "static": true,
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/src/app/services/item.service.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 61,
+    "kind": "variable",
+    "name": "__decorate",
+    "memberof": "app/services/item.service.ts",
+    "static": true,
+    "longname": "app/services/item.service.ts~__decorate",
+    "access": null,
+    "export": false,
+    "importPath": "ng-lecture/app/services/item.service.ts",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "class",
+    "name": "ItemService",
+    "memberof": "app/services/item.service.ts",
+    "static": true,
+    "longname": "app/services/item.service.ts~ItemService",
+    "access": null,
+    "export": true,
+    "importPath": "ng-lecture/app/services/item.service.ts",
+    "importStyle": "{ItemService}",
+    "description": "",
+    "lineNumber": 9,
+    "interface": false
+  },
+  {
+    "__docId__": 63,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "app/services/item.service.ts~ItemService",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/services/item.service.ts~ItemService#constructor",
+    "access": null,
+    "description": "Constructor.",
+    "lineNumber": 20
+  },
+  {
+    "__docId__": 64,
+    "kind": "member",
+    "name": "http",
+    "memberof": "app/services/item.service.ts~ItemService",
+    "static": false,
+    "longname": "app/services/item.service.ts~ItemService#http",
+    "access": null,
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "member",
+    "name": "itemResource",
+    "memberof": "app/services/item.service.ts~ItemService",
+    "static": false,
+    "longname": "app/services/item.service.ts~ItemService#itemResource",
+    "access": null,
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "member",
+    "name": "itemResourceURL",
+    "memberof": "app/services/item.service.ts~ItemService",
+    "static": false,
+    "longname": "app/services/item.service.ts~ItemService#itemResourceURL",
+    "access": null,
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "method",
+    "name": "getItems",
+    "memberof": "app/services/item.service.ts~ItemService",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/services/item.service.ts~ItemService#getItems",
+    "access": null,
+    "description": "Returns all items.",
+    "lineNumber": 27,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "method",
+    "name": "createItem",
+    "memberof": "app/services/item.service.ts~ItemService",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/services/item.service.ts~ItemService#createItem",
+    "access": null,
+    "description": "Creates new item.",
+    "lineNumber": 37,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Item"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "item",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "method",
+    "name": "updateItem",
+    "memberof": "app/services/item.service.ts~ItemService",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/services/item.service.ts~ItemService#updateItem",
+    "access": null,
+    "description": "",
+    "lineNumber": 43,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "title",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "content",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Date"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "modifiedDate",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 70,
+    "kind": "method",
+    "name": "deleteItem",
+    "memberof": "app/services/item.service.ts~ItemService",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/services/item.service.ts~ItemService#deleteItem",
+    "access": null,
+    "description": "",
+    "lineNumber": 52,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "kind": "index",
+    "content": "# NgLecture\n\nThis project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.\n\n## Development server\n\nRun `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.\n\n## Code scaffolding\n\nRun `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.\n\n## Build\n\nRun `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.\n\n## Running unit tests\n\nRun `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).\n\n## Running end-to-end tests\n\nRun `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).\n\n## Further help\n\nTo get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).\n",
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"ng-lecture\",\n  \"version\": \"0.0.0\",\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"ng\": \"ng\",\n    \"start\": \"ng serve\",\n    \"build\": \"ng build --prod\",\n    \"test\": \"ng test\",\n    \"lint\": \"ng lint\",\n    \"e2e\": \"ng e2e\"\n  },\n  \"private\": true,\n  \"dependencies\": {\n    \"@angular/animations\": \"7.2.11\",\n    \"@angular/common\": \"7.2.11\",\n    \"@angular/compiler\": \"7.2.11\",\n    \"@angular/core\": \"7.2.11\",\n    \"@angular/forms\": \"7.2.11\",\n    \"@angular/http\": \"7.2.11\",\n    \"@angular/platform-browser\": \"7.2.11\",\n    \"@angular/platform-browser-dynamic\": \"7.2.11\",\n    \"@angular/router\": \"7.2.11\",\n    \"core-js\": \"2.4.1\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-typescript-plugin\": \"^1.0.1\",\n    \"fsevents\": \"^2.1.2\",\n    \"rxjs\": \"6.4.0\",\n    \"tslib\": \"1.9.0\",\n    \"zone.js\": \"0.8.29\"\n  },\n  \"devDependencies\": {\n    \"@angular-devkit/build-angular\": \"0.11.0\",\n    \"@angular/cli\": \"7.3.7\",\n    \"@angular/compiler-cli\": \"7.2.11\",\n    \"@angular/language-service\": \"7.2.11\",\n    \"@types/jasmine\": \"2.8.3\",\n    \"@types/jasminewd2\": \"2.0.2\",\n    \"@types/node\": \"6.0.60\",\n    \"codelyzer\": \"4.0.1\",\n    \"jasmine-core\": \"2.8.0\",\n    \"jasmine-spec-reporter\": \"4.2.1\",\n    \"karma\": \"2.0.0\",\n    \"karma-chrome-launcher\": \"2.2.0\",\n    \"karma-coverage-istanbul-reporter\": \"1.2.1\",\n    \"karma-jasmine\": \"1.1.0\",\n    \"karma-jasmine-html-reporter\": \"0.2.2\",\n    \"protractor\": \"5.1.2\",\n    \"ts-node\": \"4.1.0\",\n    \"tslint\": \"5.9.1\",\n    \"typescript\": \"3.2.4\"\n  }\n}\n",
+    "longname": "/Users/ranranhe/INFO6150/assignment-9-RanranHe/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common'; // use for transform data format
 
 // Components
 import {AppComponent} from './app.component';

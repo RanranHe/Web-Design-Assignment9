@@ -20,7 +20,7 @@ export class ItemService {
   }
 
   /**
-   * Returns all stickies.
+   * Returns all items.
    *
    * @return {Observable<Array<Item>>} {Observable sticky array of stickies}
    */
@@ -29,7 +29,7 @@ export class ItemService {
   }
 
   /**
-   * Creates new sticky.
+   * Creates new item.
    *
    * @param  {Item} sticky: Sticky {new sticky object}
    * @return {Observable<Item>} {Observable for saved sticky object}

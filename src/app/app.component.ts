@@ -13,8 +13,9 @@ export class AppComponent {
   itemsParent: Array<Item>;
 
   constructor(itemService: ItemService) {
-    const stickies$: Observable<Array<Item>> = itemService.getItems();
-    stickies$.subscribe(items => {
+    // get all items
+    const items$: Observable<Array<Item>> = itemService.getItems();
+    items$.subscribe(items => {
       this.itemsParent = items;
     });
   }
