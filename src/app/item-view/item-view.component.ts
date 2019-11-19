@@ -16,6 +16,7 @@ export class ItemViewComponent implements OnInit {
   @Input() item: Item;
 
   private itemForm: FormGroup;
+  complete: boolean;
 
 
   constructor(private datePipe: DatePipe) {
@@ -30,6 +31,7 @@ export class ItemViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.complete = (this.item.status === 'Complete');
     this.showDetails();
   }
 

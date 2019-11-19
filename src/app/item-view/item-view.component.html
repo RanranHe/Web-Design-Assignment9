@@ -9,6 +9,6 @@
     </section>
     <section><p>Modified Date: </p><input type="text" id="date_modified" class="formFields" readonly formControlName="date_modified"/> <br/></section>
     <section><p>Created Date: </p><input type="text" id="date_created" class="formFields" readonly formControlName="date_created"/> <br/></section>
-    <button type="submit" [disabled]="itemForm.invalid">Update</button>
+    <button type="submit" [disabled]="itemForm.invalid || complete">Update</button>
   </form>
 </div>
