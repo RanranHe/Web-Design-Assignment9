@@ -6,7 +6,11 @@
 </div>
 
 <!--create item work area-->
-<div class="item-create">
+<div *ngIf="!showCreate" class="item-create-small">
+  <span (click)="showCreateArea()"><a href="#0">&#43;</a></span>
+</div>
+
+<div *ngIf="showCreate" class="item-create">
   <app-item-create [itemListComponent]="itemListComponent"></app-item-create>
 </div>
 

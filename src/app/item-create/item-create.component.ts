@@ -22,7 +22,8 @@ export class ItemCreateComponent implements OnInit {
       title: new FormControl('', Validators.required),
       content: new FormControl('', Validators.required),
       date_modified: new FormControl(),
-      date_created: new FormControl()
+      date_created: new FormControl(),
+      due: new FormControl('', Validators.required)
     });
   }
 
@@ -36,7 +37,8 @@ export class ItemCreateComponent implements OnInit {
   createItem() {
     const title = this.itemForm.get('title').value;
     const content = this.itemForm.get('content').value;
-    const newItem = new Item(title, content);
+    const due = this.itemForm.get('due').value;
+    const newItem = new Item(title, content, new Date(due));
     this.itemListComponent.createItem(newItem);
     this.clear();
   }
@@ -45,7 +47,8 @@ export class ItemCreateComponent implements OnInit {
   clear() {
     this.itemForm.patchValue({
       title: '',
-      content: ''
+      content: '',
+      due: ''
     });
   }
 }

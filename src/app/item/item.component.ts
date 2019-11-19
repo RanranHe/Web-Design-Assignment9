@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {Item} from '../models/item';
 import {ItemService} from '../services/item.service';
 import {ItemListComponent} from '../item-list/item-list.component';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-item',
@@ -14,12 +15,14 @@ export class ItemComponent implements OnInit {
   @Input() itemListComponent: ItemListComponent; // passing item-list in order to pass requests
   itemService: ItemService;
   showItem = false;
+  // dateString: string;
 
   /**
    * Constructor
+   * @param datePipe
    * @param itemService
    */
-  constructor(itemService: ItemService) {
+  constructor(private datePipe: DatePipe, itemService: ItemService) {
     this.itemService = itemService;
   }
 
@@ -29,7 +32,7 @@ export class ItemComponent implements OnInit {
   }
 
   // hide item details
-  cancel() {
+  cancelView() {
     this.showItem = false;
   }
 
@@ -46,7 +49,21 @@ export class ItemComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  complete(id: string) {
+    if (confirm('Already complete?')) {
+      this.itemListComponent.updateStatus(id);
+    } else {
+      return;
+    }
   }
 
+  getDateString(date: Date) {
+    const newDate = new Date(date);
+    return (newDate.getUTCMonth() + 1) + '/' + newDate.getUTCDate() + '/' + newDate.getUTCFullYear();
+  }
+
+  ngOnInit() {
+    // const date = new Date(this.item.dueDate);
+    // this.dateString = (date.getUTCMonth() + 1) + '/' + date.getUTCDate() + '/' + date.getFullYear();
+  }
 }

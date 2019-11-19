@@ -1,15 +1,19 @@
 <!--item shown in the list-->
 <div class="item">
-  <div class="content">
-    <h2> {{item.title}} </h2>
-    <!--<p> {{item.content}}</p>-->
-    <!--<p>{{item.createdDate}}</p>-->
-    <!--<p>{{item.modifiedDate}}</p>-->
-  </div>
+  <a href="#0">
+    <div class="content" (click)="view()">
+      <h2> {{item.title}} </h2>
+      <p class="status">{{item.status}}</p>
+      <p> Due on: {{getDateString(item.dueDate)}}</p>
+      <!--<p>{{item.createdDate}}</p>-->
+      <!--<p>{{item.modifiedDate}}</p>-->
+    </div>
+  </a>
 
-  <button (click)="view(item.id)">View</button>
+  <button (click)="view()">View</button>
   <button (click)="delete(item.id)">Delete</button>
-  <button *ngIf="showItem" (click)="cancel(item.id)">Cancel</button>
+  <button (click)="complete(item.id)">Complete</button>
+  <button *ngIf="showItem" (click)="cancelView()">Cancel</button>
   <!--Show item if view button is clicked, while cancel button is clicked, hide-->
   <app-item-view *ngIf="showItem" [itemListComponent]="itemListComponent" [item]="item"></app-item-view>
 </div>

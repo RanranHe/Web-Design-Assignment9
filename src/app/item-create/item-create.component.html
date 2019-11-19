@@ -3,7 +3,7 @@
   <h2>Create new Todo item</h2>
   <form [formGroup]="itemForm" (ngSubmit)="createItem()">
     <section><input type="text" id="title" placeholder="title" class="formFields" required formControlName="title"/></section>
-
+    <section><input type="date" id="due" placeholder="title" class="formFields" required formControlName="due"/></section>
     <section><textarea type="text" id="content" placeholder="content" class="formFields" required formControlName="content"></textarea><br/>
     </section>
     <button type="submit" [disabled]="itemForm.invalid">Create</button>

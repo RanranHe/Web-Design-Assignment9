@@ -2,14 +2,13 @@
 <div class="item-view">
   <form [formGroup]="itemForm" (ngSubmit)="updateItemInfo()">
     <section><p>Title: </p><input type="text" id="title" class="formFields" required formControlName="title"/></section>
-
-    <section><p>Content: </p> <input type="text" id="content" class="formFields" required
-                                     formControlName="content"/><br/>
+    <section><p class="status">{{item.status}}</p></section>
+    <section><p>Due On: </p><input type="date" id="due" class="formFields" required formControlName="due"/></section>
+    <section><p>Description: </p><input type="text" id="content" class="formFields" required
+                                        formControlName="content"/><br/>
     </section>
-    <section><p>Modified Date: </p><input type="text" id="date_modified" class="formFields" readonly
-                                          formControlName="date_modified"/> <br/></section>
-    <section><p>Created Date: </p><input type="text" id="date_created" class="formFields" readonly
-                                         formControlName="date_created"/> <br/></section>
+    <section><p>Modified Date: </p><input type="text" id="date_modified" class="formFields" readonly formControlName="date_modified"/> <br/></section>
+    <section><p>Created Date: </p><input type="text" id="date_created" class="formFields" readonly formControlName="date_created"/> <br/></section>
     <button type="submit" [disabled]="itemForm.invalid">Update</button>
   </form>
 </div>

@@ -23,7 +23,8 @@ export class ItemViewComponent implements OnInit {
       title: new FormControl('', Validators.required),
       content: new FormControl('', Validators.required),
       date_modified: new FormControl(),
-      date_created: new FormControl()
+      date_created: new FormControl(),
+      due: new FormControl('', Validators.required)
     });
 
   }
@@ -34,11 +35,14 @@ export class ItemViewComponent implements OnInit {
 
   // parse value to form
   showDetails() {
+    const date = new Date(this.item.dueDate);
+    const dateString = (date.getUTCMonth() + 1) + '/' + date.getUTCDate() + '/' + date.getUTCFullYear();
     this.itemForm.patchValue({
       title: this.item.title,
       content: this.item.content,
       date_modified: this.datePipe.transform(this.item.modifiedDate, 'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\''),
-      date_created: this.item.createdDate
+      date_created: this.item.createdDate,
+      due: this.datePipe.transform(dateString, 'yyyy-MM-dd')
     });
   }
 
@@ -51,7 +55,8 @@ export class ItemViewComponent implements OnInit {
       const title = this.itemForm.get('title').value;
       const content = this.itemForm.get('content').value;
       const modified_date = new Date();
-      this.itemListComponent.updateItem(this.item.id, title, content, modified_date);
+      const dueDate = this.itemForm.get('due').value;
+      this.itemListComponent.updateItem(this.item.id, title, content, modified_date, dueDate);
       this.itemForm.patchValue({
         date_modified: this.datePipe.transform(modified_date, 'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'')
       });
