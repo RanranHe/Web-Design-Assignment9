@@ -20,12 +20,13 @@ export class ItemListComponent implements OnInit {
     this.itemListComponent = this;
   }
 
-  updateItem(id: string, title: string, content: string) {
+  updateItem(id: string, title: string, content: string, modifiedDate: Date) {
     this.itemsChild.forEach(item => {
       if (item.id === id) {
         item.title = title;
         item.content = content;
-        this.itemService.updateItem(id, title, content);
+        item.modifiedDate = modifiedDate;
+        this.itemService.updateItem(id, title, content, modifiedDate);
       }
     });
   }
@@ -42,6 +43,8 @@ export class ItemListComponent implements OnInit {
   createItem(item: Item) {
     const newItem$: Observable<Item> = this.itemService.createItem(item);
     newItem$.subscribe(res => {
+      console.log(res);
+      // @ts-ignore
       this.itemsChild.push(res.item);
     });
   }

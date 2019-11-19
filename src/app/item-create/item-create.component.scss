@@ -1,8 +1,32 @@
-.item-view {
+.item-create {
   background-color: #afdeb7;
   border-radius: 25px;
-  height: 220px;
+  height: 250px;
   width: 100%;
   padding-top: 8%;
   text-align: center;
+
+  button {
+    margin-top: 50px;
+  }
+
+  section {
+    margin-left: 0;
+    margin-bottom: 5px;
+    position: relative;
+    height: 30px;
+
+    p {
+      display: inline-block;
+      width: 120px;
+    }
+
+    input{
+      width: 70%;
+    }
+    textarea{
+      height: 50px;
+      width: 70%;
+    }
+  }
 }

@@ -40,10 +40,9 @@ export class ItemService {
     return this.http.post<Item>(`${this.itemResourceURL}/item`, newItem);
   }
 
-  updateItem(id: string, title: string, content: string) {
-    const modifiedDate = new Date();
+  updateItem(id: string, title: string, content: string, modifiedDate: Date) {
     const observable = this.http.put<Item>(`${this.itemResourceURL}/item/${id}`,
-      {title: title, content: content, date_modified: modifiedDate});
+      {title: title, content: content, modifiedDate: modifiedDate});
     observable.subscribe(res => {
       console.log('Update Item');
       console.log(res);

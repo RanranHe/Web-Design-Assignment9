@@ -4,6 +4,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {ItemService} from '../services/item.service';
 import {ItemListComponent} from '../item-list/item-list.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-item-view',
@@ -14,14 +15,13 @@ import {ItemListComponent} from '../item-list/item-list.component';
 export class ItemViewComponent implements OnInit {
   @Input() itemListComponent: ItemListComponent;
   @Input() item: Item;
-  // @Output() updateItemEmitted: EventEmitter<Item> = new EventEmitter<Item>();
 
   private itemForm: FormGroup;
   // private title;
   // private content;
   // private date_modified;
 
-  constructor(private itemService: ItemService) {
+  constructor(private datePipe: DatePipe) {
     this.itemForm = new FormGroup({
       title: new FormControl('', Validators.required),
       content: new FormControl('', Validators.required),
@@ -33,13 +33,14 @@ export class ItemViewComponent implements OnInit {
 
   ngOnInit() {
     this.showDetails();
+    console.log(this.datePipe.transform(new Date(), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\''));
   }
 
   showDetails() {
     this.itemForm.patchValue({
       title: this.item.title,
       content: this.item.content,
-      date_modified: this.item.modifiedDate,
+      date_modified: this.datePipe.transform(this.item.modifiedDate, 'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\''),
       date_created: this.item.createdDate
     });
   }
@@ -47,7 +48,10 @@ export class ItemViewComponent implements OnInit {
   updateItemInfo() {
     const title = this.itemForm.get('title').value;
     const content = this.itemForm.get('content').value;
-
-    this.itemListComponent.updateItem(this.item.id, title, content);
+    const modified_date = new Date();
+    this.itemListComponent.updateItem(this.item.id, title, content, modified_date);
+    this.itemForm.patchValue({
+      date_modified: this.datePipe.transform(modified_date, 'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'')
+    });
   }
 }
