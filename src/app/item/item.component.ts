@@ -60,7 +60,7 @@ export class ItemComponent implements OnInit {
   getDateString(d: Date) {
     const date = new Date(d);
     const dateString = date.getUTCFullYear() + '/' + this.form((date.getUTCMonth() + 1)) + '/' + this.form(date.getUTCDate())
-      + ' ' + this.form(date.getUTCHours()) + ':' + this.form(date.getUTCMinutes());
+      + ' ' + this.form(date.getHours()) + ':' + this.form(date.getMinutes());
     return dateString;
   }
 
