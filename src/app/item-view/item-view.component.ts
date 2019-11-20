@@ -40,7 +40,7 @@ export class ItemViewComponent implements OnInit {
     const date = new Date(this.item.dueDate);
 
     const dateString = date.getUTCFullYear() + '-' + this.form((date.getUTCMonth() + 1)) + '-' + this.form(date.getUTCDate())
-      + 'T' + this.form(date.getUTCHours()) + ':' + this.form(date.getUTCMinutes());
+      + 'T' + this.form(date.getHours()) + ':' + this.form(date.getMinutes());
     this.itemForm.patchValue({
       title: this.item.title,
       content: this.item.content,
