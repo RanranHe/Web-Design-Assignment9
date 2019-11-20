@@ -19,6 +19,11 @@ export class ItemListComponent implements OnInit {
   constructor(itemService: ItemService) {
     this.itemService = itemService;
     this.itemListComponent = this;
+    // get all items
+    const items$: Observable<Array<Item>> = itemService.getItems();
+    items$.subscribe(items => {
+      this.itemsChild = items;
+    });
   }
 
   /**

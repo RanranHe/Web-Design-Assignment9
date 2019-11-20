@@ -10,13 +10,13 @@ import {Observable} from 'rxjs';
 })
 export class AppComponent {
 
-  itemsParent: Array<Item>;
+  // itemsParent: Array<Item>;
 
   constructor(itemService: ItemService) {
-    // get all items
-    const items$: Observable<Array<Item>> = itemService.getItems();
-    items$.subscribe(items => {
-      this.itemsParent = items;
-    });
+    // // get all items
+    // const items$: Observable<Array<Item>> = itemService.getItems();
+    // items$.subscribe(items => {
+    //   this.itemsParent = items;
+    // });
   }
 }

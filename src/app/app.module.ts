@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import { DatePipe } from '@angular/common'; // use for transform data format
+import {RouterModule} from '@angular/router';
 
 // Components
 import {AppComponent} from './app.component';
@@ -15,6 +16,9 @@ import {ItemCreateComponent} from './item-create/item-create.component';
 
 // Services
 import {ItemService} from './services/item.service';
+
+// Routes
+import { appRoutes } from './routes';
 
 
 @NgModule({
@@ -30,6 +34,7 @@ import {ItemService} from './services/item.service';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [ItemService, DatePipe],
   bootstrap: [AppComponent],
